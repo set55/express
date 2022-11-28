@@ -8,6 +8,5 @@ RUN mkdir /var/www
 WORKDIR /var/www
 COPY . .
 RUN npm install
-ENV PORT=4000
 CMD ["npm", "start"]
 
