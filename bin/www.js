@@ -7,6 +7,7 @@
 import app from '../app.js'
 import debugLib from 'debug';
 import http from 'http';
+import logger from '../lib/logger.js'
 
 var debug = debugLib('express:server')
 
@@ -27,7 +28,7 @@ var server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
-console.log(port)
+logger.info(`server listen ${port}`)
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
