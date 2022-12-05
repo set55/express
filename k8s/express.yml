@@ -15,8 +15,10 @@ spec:
         app: express
     spec:
       containers:
-        - name: express
-          image: 192.168.11.51:5000/express:1.0.0
-          env:
-            - name: PORT
-              value: 3001
+      - name: express
+        image: 192.168.11.51:5000/express:1.0.0
+        ports:
+        - containerPort: 3001
+        env:
+        - name: PORT
+          value: 3001
