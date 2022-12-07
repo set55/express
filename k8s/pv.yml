@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-local-log
+spec:
+  storageClassName: localstorage
+  capacity:
+    storage: 3Gi
+  accessModes:
+    - ReadWriteOnce
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - ip-192-168-4-254 
+  persistentVolumeReclaimPolicy: Retain
+  local:
+    path: /home/ubuntu/express/logs
+   
