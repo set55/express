@@ -4,8 +4,9 @@ let router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  logger.info(`origin_url: ${req.originalUrl}|ip: ${req.ip}|x-forwarded-for: ${req.get('x-forwarded-for')}`)
-  res.send('respond with a resource');
+  // console.log(req.headers);
+  logger.info(`origin_url: ${req.originalUrl}|ip: ${req.ip}|header: ${JSON.stringify(req.headers)}`)
+  res.send(`origin_url: ${req.originalUrl}|ip: ${req.ip}|header: ${JSON.stringify(req.headers)}`);
 });
 
 // module.exports = router;
