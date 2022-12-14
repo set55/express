@@ -20,7 +20,8 @@ spec:
       labels:
         app: express
     spec:
-      nodeSelector: kubernetes.io/hostname=ip-192-168-4-254
+      nodeSelector:
+        kubernetes.io/hostname: ip-192-168-4-254
 #      affinity:
 #        podAffinity:
 #          requiredDuringSchedulingIgnoredDuringExecution:
