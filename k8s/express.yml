@@ -25,11 +25,11 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
           - labelSelector:
               matchExpressions:
-              - key: app
+              - key: kubernetes.io/hostname
                 operator: In
                 values:
-                - nothing
-            topologyKey: dev.node
+                - ip-192-168-4-254
+            topologyKey: kubernetes.io/hostname
       containers:
       - name: express
         image: "192.168.11.51:5000/express:1.0.2"
