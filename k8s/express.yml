@@ -44,4 +44,39 @@ spec:
       volumes:
       - name: logs
         persistentVolumeClaim:
-          claimName: pvc-local-log
+          claimName: pvc-express
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-express
+spec:
+  storageClassName: localstorage
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-express
+spec:
+  storageClassName: localstorage
+  capacity:
+    storage: 3Gi
+  accessModes:
+    - ReadWriteOnce
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - ip-192-168-4-254
+  persistentVolumeReclaimPolicy: Retain
+  local:
+    path: /home/ubuntu/express/logs
+
