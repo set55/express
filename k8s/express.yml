@@ -20,16 +20,17 @@ spec:
       labels:
         app: express
     spec:
-      affinity:
-        podAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchExpressions:
-              - key: kubernetes.io/hostname
-                operator: In
-                values:
-                - ip-192-168-4-254
-            topologyKey: kubernetes.io/hostname
+      nodeSelector: kubernetes.io/hostname=ip-192-168-4-254
+#      affinity:
+#        podAffinity:
+#          requiredDuringSchedulingIgnoredDuringExecution:
+#          - labelSelector:
+#              matchExpressions:
+#              - key: app
+#                operator: In
+#                values:
+#                - express
+#            topologyKey: kubernetes.io/hostname
       containers:
       - name: express
         image: "192.168.11.51:5000/express:1.0.2"
