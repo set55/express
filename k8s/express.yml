@@ -106,10 +106,8 @@ kind: Ingress
 metadata:
   name: express-ingress
   namespace: express
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  ingressClassName: express-ingress-class
+  ingressClassName: nginx
   rules:
     - http:
         paths:
